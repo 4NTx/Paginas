@@ -1,0 +1,35 @@
+<div class="registro-container">
+    <h2>Registro</h2>
+    <form [formGroup]="formRegistro" (ngSubmit)="registrar()">
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" placeholder="Digite seu email" required>
+            <span class="erro" *ngIf="formRegistro.get('email')?.invalid && formRegistro.get('email')?.touched">
+                Por favor, insira um email válido.
+            </span>
+        </div>
+        <div class="input-group">
+            <label for="senha">Senha</label>
+            <div class="senha-wrapper">
+                <input [type]="senhaVisivel ? 'text' : 'password'" id="senha" formControlName="senha"
+                    placeholder="Digite sua senha" required>
+                <button type="button" (click)="toggleSenhaVisivel()" class="toggle-senha">
+                    <i class="material-icons">{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</i>
+                </button>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" formControlName="nome" placeholder="Digite seu nome" required>
+        </div>
+        <div class="input-group">
+            <label for="cartaoID">Cartão ID</label>
+            <input type="text" id="cartaoID" formControlName="cartaoID" placeholder="Digite seu cartão ID" required>
+        </div>
+        <div class="input-group">
+            <label for="whats">WhatsApp</label>
+            <input type="text" id="whats" formControlName="whats" placeholder="Digite seu WhatsApp" required>
+        </div>
+        <button type="submit" [disabled]="formRegistro.invalid" class="botao-gradiente">Registrar</button>
+    </form>
+</div>

@@ -30,9 +30,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/notie/dist/notie.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/notie/dist/notie.min.js"
+            ]
           },
           "configurations": {
             "production": {

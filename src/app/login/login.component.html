@@ -1,0 +1,27 @@
+<div class="login-container">
+    <form [formGroup]="formLogin" (ngSubmit)="fazerLogin()">
+        <h2>RexLab Login</h2>
+        <p class="paragrafo-senha">Entre com seu email e senha para acessar o sistema.</p>
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" placeholder="Digite seu email" required>
+            <span class="erro" *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched">
+                Por favor, insira um email válido.
+            </span>
+        </div>
+        <div class="input-group">
+            <label for="senha">Senha</label>
+            <div class="senha-wrapper">
+                <input [type]="senhaVisivel ? 'text' : 'password'" id="senha" formControlName="senha"
+                    placeholder="Digite sua senha" required>
+                <button type="button" (click)="toggleSenhaVisivel()" class="toggle-senha">
+                    <i class="material-icons">{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</i>
+                </button>
+            </div>
+        </div>
+        <div class="link-registro">
+            <p>Não tem uma conta? <a routerLink="/registro">Registre-se</a></p>
+        </div>
+        <button type="submit" [disabled]="formLogin.invalid" class="botao-gradiente">Entrar</button>
+    </form>
+</div>

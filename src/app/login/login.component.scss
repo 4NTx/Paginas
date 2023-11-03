@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    width: 80%;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 10px;
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: calc(100% - 10px);
+            padding: 8px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+        }
+
+        .senha-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-bottom: 6px;
+        }
+
+        .toggle-senha {
+            position: absolute;
+            background: none;
+            border: none;
+            cursor: pointer;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            color: #aaa;
+
+            .material-icons {
+                font-size: 1em;
+            }
+        }
+    }
+
+    .link-registro {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.8em;
+        color: #000000;
+    }
+
+    .paragrafo-senha {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 0.8em;
+        color: #000000;
+    }
+
+    .botao-gradiente {
+        width: 100%;
+        padding: 10px;
+        background: #9c27b0;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+        &:hover {
+            background: #7b1fa2b5;
+        }
+    }
+
+    .erro {
+        color: red;
+        font-size: 0.8em;
+        margin-top: 5px;
+        display: block;
+    }
+}
