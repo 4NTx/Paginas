@@ -5,10 +5,10 @@
         <div class="grupo-input">
             <label for="email">Email</label>
             <input type="email" id="email" formControlName="email" placeholder="Digite seu email" required
-                [class.erro-borda]="formLogin.get('email')?.invalid && (formLogin.get('email')?.touched || submitted)"
+                [class.erro-borda]="formLogin.get('email')?.invalid && (formLogin.get('email')?.touched || enviado)"
                 class="campo-email">
             <span class="erro-mensagem"
-                *ngIf="formLogin.get('email')?.invalid && (formLogin.get('email')?.touched || submitted)">
+                *ngIf="formLogin.get('email')?.invalid && (formLogin.get('email')?.touched || enviado)">
                 Por favor, insira um email válido.
             </span>
         </div>
@@ -17,14 +17,14 @@
             <div class="olhinho-senha">
                 <input [type]="senhaVisivel ? 'text' : 'password'" id="senha" formControlName="senha"
                     placeholder="Digite sua senha" required
-                    [class.erro-borda]="formLogin.get('senha')?.invalid && (formLogin.get('senha')?.touched || submitted)"
+                    [class.erro-borda]="formLogin.get('senha')?.invalid && (formLogin.get('senha')?.touched || enviado)"
                     class="campo-senha">
                 <button type="button" (click)="toggleSenhaVisivel()" class="ver-senha">
                     <i class="material-icons">{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</i>
                 </button>
             </div>
             <span class="erro-mensagem"
-                *ngIf="formLogin.get('senha')?.invalid && (formLogin.get('senha')?.touched || submitted)">
+                *ngIf="formLogin.get('senha')?.invalid && (formLogin.get('senha')?.touched || enviado)">
                 Por favor, insira uma senha.
             </span>
         </div>

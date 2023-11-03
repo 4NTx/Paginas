@@ -14,13 +14,13 @@ export class LoginComponent {
     senha: new FormControl('', [Validators.required])
   });
 
-  
-  submitted = false;
+
+  enviado = false;
   senhaVisivel = false;
   constructor(private http: HttpClient) { }
 
   fazerLogin(): void {
-    this.submitted = true;  // Definimos como true quando o formulário é enviado
+    this.enviado = true;
 
     if (this.formLogin.invalid) {
       return;
