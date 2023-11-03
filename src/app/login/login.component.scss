@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 .login-container {
     position: absolute;
@@ -7,18 +7,19 @@
     transform: translate(-50%, -50%);
     align-items: center;
     width: 80%;
+    font-family: 'Rubik', sans-serif;
     max-width: 400px;
     margin: auto;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
 
     h2 {
         text-align: center;
         margin-bottom: 20px;
     }
 
-    .input-group {
+    .grupo-input {
         margin-bottom: 10px;
 
         label {
@@ -35,14 +36,14 @@
             margin-right: 5px;
         }
 
-        .senha-wrapper {
+        .olhinho-senha {
             position: relative;
             display: flex;
             align-items: center;
             padding-bottom: 6px;
         }
 
-        .toggle-senha {
+        .ver-senha {
             position: absolute;
             background: none;
             border: none;
@@ -74,7 +75,7 @@
         color: #000000;
     }
 
-    .botao-gradiente {
+    .botao-enviar {
         width: 100%;
         padding: 10px;
         background: #9c27b0;
@@ -89,10 +90,12 @@
         }
     }
 
-    .erro {
-        color: red;
-        font-size: 0.8em;
-        margin-top: 5px;
-        display: block;
+    .erro-borda {
+        border: 1px solid #FF5252 !important;
+    }
+
+    .erro-mensagem {
+        color: #FF5252;
+        font-size: 12px;
     }
 }

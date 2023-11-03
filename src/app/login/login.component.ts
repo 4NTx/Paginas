@@ -14,10 +14,17 @@ export class LoginComponent {
     senha: new FormControl('', [Validators.required])
   });
 
+  
+  submitted = false;
   senhaVisivel = false;
   constructor(private http: HttpClient) { }
 
-  fazerLogin() {
+  fazerLogin(): void {
+    this.submitted = true;  // Definimos como true quando o formulário é enviado
+
+    if (this.formLogin.invalid) {
+      return;
+    }
     if (this.formLogin.valid) {
       const credenciais = this.formLogin.value;
       this.http.post('http://localhost:3000/autenticacao/login', credenciais)

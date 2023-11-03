@@ -2,26 +2,41 @@
     <form [formGroup]="formLogin" (ngSubmit)="fazerLogin()">
         <h2>RexLab Login</h2>
         <p class="paragrafo-senha">Entre com seu email e senha para acessar o sistema.</p>
-        <div class="input-group">
+        <div class="grupo-input">
             <label for="email">Email</label>
-            <input type="email" id="email" formControlName="email" placeholder="Digite seu email" required>
-            <span class="erro" *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched">
+            <input type="email" id="email" formControlName="email" placeholder="Digite seu email" required
+                [class.erro-borda]="formLogin.get('email')?.invalid && (formLogin.get('email')?.touched || submitted)"
+                class="campo-email">
+            <span class="erro-mensagem"
+                *ngIf="formLogin.get('email')?.invalid && (formLogin.get('email')?.touched || submitted)">
                 Por favor, insira um email válido.
             </span>
         </div>
-        <div class="input-group">
+        <div class="grupo-input">
             <label for="senha">Senha</label>
-            <div class="senha-wrapper">
+            <div class="olhinho-senha">
                 <input [type]="senhaVisivel ? 'text' : 'password'" id="senha" formControlName="senha"
-                    placeholder="Digite sua senha" required>
-                <button type="button" (click)="toggleSenhaVisivel()" class="toggle-senha">
+                    placeholder="Digite sua senha" required
+                    [class.erro-borda]="formLogin.get('senha')?.invalid && (formLogin.get('senha')?.touched || submitted)"
+                    class="campo-senha">
+                <button type="button" (click)="toggleSenhaVisivel()" class="ver-senha">
                     <i class="material-icons">{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</i>
                 </button>
             </div>
+            <span class="erro-mensagem"
+                *ngIf="formLogin.get('senha')?.invalid && (formLogin.get('senha')?.touched || submitted)">
+                Por favor, insira uma senha.
+            </span>
         </div>
         <div class="link-registro">
-            <p>Não tem uma conta? <a routerLink="/registro">Registre-se</a></p>
+            <p>Não tem uma conta? <a routerLink="/registro">Solicite o seu registro</a></p>
         </div>
-        <button type="submit" [disabled]="formLogin.invalid" class="botao-gradiente">Entrar</button>
+        <button type="submit" class="botao-enviar" (click)="fazerLogin()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12" viewBox="0 0 20 12" fill="none" class="seta">
+                <path
+                    d="M19.2688 4.00033L16.0434 0.741643C15.966 0.663527 15.8738 0.601525 15.7722 0.559213C15.6707 0.516901 15.5617 0.495117 15.4517 0.495117C15.3417 0.495117 15.2327 0.516901 15.1312 0.559213C15.0296 0.601525 14.9374 0.663527 14.86 0.741643C14.7047 0.897795 14.6176 1.10903 14.6176 1.32921C14.6176 1.54939 14.7047 1.76062 14.86 1.91677L17.827 4.90877H0.833425C0.612387 4.90877 0.400402 4.99657 0.244105 5.15287C0.087807 5.30917 0 5.52115 0 5.74219H0C0 5.96323 0.087807 6.17522 0.244105 6.33151C0.400402 6.48781 0.612387 6.57562 0.833425 6.57562H17.877L14.86 9.58428C14.7819 9.66176 14.7198 9.75394 14.6775 9.8555C14.6352 9.95706 14.6134 10.066 14.6134 10.176C14.6134 10.286 14.6352 10.395 14.6775 10.4965C14.7198 10.5981 14.7819 10.6903 14.86 10.7677C14.9374 10.8459 15.0296 10.9079 15.1312 10.9502C15.2327 10.9925 15.3417 11.0143 15.4517 11.0143C15.5617 11.0143 15.6707 10.9925 15.7722 10.9502C15.8738 10.9079 15.966 10.8459 16.0434 10.7677L19.2688 7.53406C19.737 7.06525 20 6.42977 20 5.7672C20 5.10462 19.737 4.46914 19.2688 4.00033Z"
+                    fill="white" />
+            </svg>
+        </button>
     </form>
 </div>
