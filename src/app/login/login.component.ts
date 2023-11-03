@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TitleService } from '../title.service';
 import notie from 'notie';
 
 @Component({
@@ -8,6 +9,9 @@ import notie from 'notie';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
+
+
 export class LoginComponent {
   formLogin = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -17,7 +21,9 @@ export class LoginComponent {
 
   enviado = false;
   senhaVisivel = false;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private titleService: TitleService) {
+    this.titleService.setTitle("- Login");
+  }
 
   fazerLogin(): void {
     this.enviado = true;
