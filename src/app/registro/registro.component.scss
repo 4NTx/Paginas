@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
-.login-container {
+.registro-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -14,57 +14,38 @@
     border-radius: 8px;
     box-shadow: 0 0 10px var(--cor-primaria-opaca);
 
-    .titulo-login {
+    .titulo-registro {
         text-align: center;
         color: var(--cor-primaria-opaca);
         font-size: 40px;
-    }
-
-    .icone-olho {
-        color: var(--cor-primaria-opaca);
     }
 
     .tamanho-inteiro {
         width: 100%;
     }
 
-    .grupo-input {
-        margin-bottom: 10px;
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input {
-            width: calc(100% - 10px);
-            padding: 8px;
-            box-sizing: border-box;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            margin-right: 5px;
-        }
-    }
-
-    .link-solicitar-registro,
-    .link-esqueci-senha p a {
+    .link-fazer-login a {
         color: var(--cor-primaria);
-        display: block;
         text-align: center;
         margin-top: 10px;
         font-size: 12.9px;
     }
 
-    .link-solicitar-registro a {
-        color: var(--cor-primaria);
+    .link-fazer-login {
         text-align: center;
         margin-top: 10px;
+        font-size: 12.9px;
+        color: #000000aa;
     }
 
-    .paragrafo-senha {
+    .paragrafo-registro {
         margin-top: 10px;
         text-align: center;
         color: #000000aa;
+    }
+
+    .icone-olho {
+        color: var(--cor-primaria-opaca);
     }
 
     .botao-enviar {
@@ -81,14 +62,5 @@
         &:hover {
             background: var(--cor-primaria-opaca);
         }
-    }
-
-    .erro-borda {
-        border: 1px solid #FF5252 !important;
-    }
-
-    .erro-mensagem {
-        color: #FF5252;
-        font-size: 12px;
     }
 }

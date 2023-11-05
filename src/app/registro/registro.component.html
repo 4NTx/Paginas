@@ -1,0 +1,87 @@
+<div class="registro-container">
+
+    <!-- Início formulário Registro -->
+    <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
+        <br>
+        <h1 class="titulo-registro">REXLAB REGISTRO</h1>
+        <br>
+        <p class="paragrafo-registro">Preencha os campos abaixo para criar sua conta.</p>
+        <br>
+
+        <!-- Campo de Nome -->
+        <mat-form-field appearance="outline" class="tamanho-inteiro">
+            <mat-label>Nome</mat-label>
+            <input matInput type="text" formControlName="nome" placeholder="Digite seu nome" required>
+            <mat-error *ngIf="formRegistro.get('nome')?.invalid && (formRegistro.get('nome')?.touched || enviado)">
+                Por favor, insira um nome válido.
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Campo de Email -->
+        <mat-form-field appearance="outline" class="tamanho-inteiro">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="Digite seu email" required>
+            <mat-error *ngIf="formRegistro.get('email')?.invalid && (formRegistro.get('email')?.touched || enviado)">
+                Por favor, insira um email válido.
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Campo de Senha -->
+        <mat-form-field appearance="outline" class="tamanho-inteiro">
+            <mat-label>Senha</mat-label>
+            <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="senha"
+                placeholder="Digite sua senha" required>
+            <mat-error *ngIf="formRegistro.get('senha')?.invalid && (formRegistro.get('senha')?.touched || enviado)">
+                Por favor, insira uma senha.
+            </mat-error>
+            <button mat-icon-button matSuffix (click)="senhaVisivel = !senhaVisivel" type="button">
+                <mat-icon class="icone-olho">{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <!-- Campo de Confirmar Senha -->
+        <mat-form-field appearance="outline" class="tamanho-inteiro">
+            <mat-label>Confirmar Senha</mat-label>
+            <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="confirmarSenha"
+                placeholder="Confirme sua senha" required>
+            <mat-error
+                *ngIf="formRegistro.get('confirmarSenha')?.invalid && (formRegistro.get('confirmarSenha')?.touched || enviado)">
+                <span *ngIf="f['confirmarSenha'].errors?.['naoCoincide']">As senhas não coincidem.</span>
+                <span *ngIf="f['confirmarSenha'].errors?.['required']">Por favor, confirme sua senha.</span>
+            </mat-error>
+            <button mat-icon-button matSuffix (click)="senhaVisivel = !senhaVisivel" type="button">
+                <mat-icon class="icone-olho">{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <!-- Campo de ID do Cartão -->
+        <mat-form-field appearance="outline" class="tamanho-inteiro">
+            <mat-label>ID do Cartão</mat-label>
+            <input matInput type="text" formControlName="cartaoID" placeholder="Digite o ID do seu cartão" required>
+            <mat-error
+                *ngIf="formRegistro.get('cartaoID')?.invalid && (formRegistro.get('cartaoID')?.touched || enviado)">
+                Por favor, insira um ID de cartão válido.
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Campo de WhatsApp -->
+        <mat-form-field appearance="outline" class="tamanho-inteiro">
+            <mat-label>WhatsApp</mat-label>
+            <input matInput type="text" formControlName="whats" placeholder="Digite seu número de WhatsApp" required>
+            <mat-error *ngIf="formRegistro.get('whats')?.invalid && (formRegistro.get('whats')?.touched || enviado)">
+                Por favor, insira um número de WhatsApp válido.
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Botão de Enviar -->
+        <button mat-raised-button type="submit" class="botao-enviar" [disabled]="carregando">
+            REGISTRAR
+        </button>
+        <div class="link-fazer-login">
+            <br>
+            <p>Já tem uma conta? <a routerLink="/login">Faça o login</a></p>
+        </div>
+    </form>
+
+    <!-- Fim formulário Registro -->
+</div>

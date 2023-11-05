@@ -17,6 +17,7 @@ export class LoginComponent {
 
   enviado = false;
   senhaVisivel = false;
+  carregando = false;
 
   constructor(private http: HttpClient, private titleService: TitleService, private snackBar: MatSnackBar) {
     this.titleService.setTitle('- LOGIN');
@@ -25,11 +26,10 @@ export class LoginComponent {
   fazerLogin(): void {
     this.enviado = true;
 
-    const email = this.formLogin.get('email');
-    const senha = this.formLogin.get('senha');
-
-    if (this.formLogin.invalid) {
+    if (this.formLogin.invalid || this.carregando) {
       let mensagensErro = [];
+      const email = this.formLogin.get('email');
+      const senha = this.formLogin.get('senha');
 
       if (email?.invalid) {
         if (email.errors?.['required']) {
@@ -42,22 +42,35 @@ export class LoginComponent {
       if (senha?.invalid && senha.errors?.['required']) {
         mensagensErro.push('Por favor, insira uma senha.');
       }
-      this.snackBar.open(mensagensErro.join(' '), 'Fechar', { duration: 3000, panelClass: ['warning-snackbar'] });
+
+      if (this.carregando) {
+        mensagensErro.push('Estamos enviando sua requisição, aguarde...');
+      }
+
+      if (!email?.value && !senha?.value) {
+        mensagensErro = ['Verifique todos os campos obrigatórios.'];
+      }
+
+      this.snackBar.open(mensagensErro.join(' '), 'Fechar', { duration: 5000, panelClass: ['warning-snackbar'] });
       return;
     }
 
+    this.carregando = true;
     const credenciais = this.formLogin.value;
+
     this.http.post('http://localhost:3000/autenticacao/login', credenciais)
       .subscribe({
         next: (resposta: any) => {
           console.log('Login bem-sucedido!', resposta);
           localStorage.setItem('token', resposta.token);
-          this.snackBar.open('Login bem-sucedido!', 'Fechar', { duration: 3000, panelClass: ['success-snackbar'] });
+          this.snackBar.open('Login bem-sucedido!', 'Fechar', { duration: 5000, panelClass: ['success-snackbar'] });
+          this.carregando = false;
         },
         error: (erro: HttpErrorResponse) => {
           console.error('Erro no login', erro);
           const mensagemErro = erro.error?.mensagem || erro.error?.message || erro.error?.error || 'Erro no login';
-          this.snackBar.open(mensagemErro, 'Fechar', { duration: 3000, panelClass: ['error-snackbar'] });
+          this.snackBar.open(mensagemErro, 'Fechar', { duration: 5000, panelClass: ['error-snackbar'] });
+          this.carregando = false;
         }
       });
   }
