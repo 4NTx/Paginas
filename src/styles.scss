@@ -1,3 +1,26 @@
+:root {
+
+  --cor-primaria: #3F51B5;
+  --cor-primaria-opaca: #3f51b5c4;
+
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
-  }
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+.mat-mdc-snack-bar-container {
+  --mat-mdc-snack-bar-button-color: red;
+  --mdc-snackbar-container-color: black;
+  --mdc-snackbar-supporting-text-color: yellow;
+}

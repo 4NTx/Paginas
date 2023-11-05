@@ -5,7 +5,7 @@ import { Title } from "@angular/platform-browser";
 
 export class TitleService {
 
-    private baseTitle = 'RexLab';
+    private baseTitle = 'REXLAB';
 
     constructor(private titleService: Title) { }
 
