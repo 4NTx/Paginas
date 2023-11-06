@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { RegistroComponent } from './registro/registro.component';
 import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.component';
+import { RedefinirSenhaComponent } from './redefinir-senha/redefinir-senha.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.compo
     LoginComponent,
     RegistroComponent,
     RecuperarSenhaComponent,
+    RedefinirSenhaComponent,
   ],
   imports: [
     BrowserModule,

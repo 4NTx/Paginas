@@ -1,0 +1,52 @@
+<div class="redefinir-senha-container">
+    <br>
+    <h1 class="titulo-redefinir-senha">REDEFINIÇÃO DE SENHA</h1>
+    <br>
+    <p class="paragrafo-redefinir-senha">Confira o seu e-mail e insira uma nova senha.</p>
+    <br>
+
+    <form [formGroup]="formRedefinirSenha" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="tamanho-inteiro">
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email" placeholder="Insira seu e-mail" required>
+            <mat-error *ngIf="formRedefinirSenha.get('email')?.hasError('required')">
+                O campo de e-mail é <strong>obrigatório</strong>.
+            </mat-error>
+            <mat-error *ngIf="formRedefinirSenha.get('email')?.hasError('email')">
+                Insira um e-mail <strong>válido</strong>.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="tamanho-inteiro">
+            <mat-label>Nova Senha</mat-label>
+            <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="novaSenha"
+                placeholder="Insira sua nova senha" required>
+            <mat-icon class="icone-olho" matSuffix (click)="toggleSenhaVisivel()">
+                {{ senhaVisivel ? 'visibility' : 'visibility_off' }}
+            </mat-icon>
+            <mat-error *ngIf="formRedefinirSenha.get('novaSenha')?.hasError('required')">
+                O campo de nova senha é <strong>obrigatório</strong>.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="tamanho-inteiro">
+            <mat-label>Confirmar Nova Senha</mat-label>
+            <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="confirmacaoSenha"
+                placeholder="Confirme sua nova senha" required>
+            <mat-icon class="icone-olho" matSuffix (click)="toggleSenhaVisivel()">
+                {{ senhaVisivel ? 'visibility' : 'visibility_off' }}
+            </mat-icon>
+            <mat-error *ngIf="formRedefinirSenha.errors?.['notSame']">
+                As senhas não coincidem
+            </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="carregando" class="botao-enviar">
+            REDEFINIR SENHA
+        </button>
+    </form>
+
+    <div class="links-redefinicao">
+        <a routerLink="/login">Voltar ao Login</a>
+    </div>
+</div>

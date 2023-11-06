@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+.redefinir-senha-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    width: 80%;
+    font-family: 'Rubik', sans-serif;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--cor-primaria-opaca);
+
+    .titulo-redefinir-senha {
+        text-align: center;
+        color: var(--cor-primaria-opaca);
+        font-size: 40px;
+    }
+
+    .tamanho-inteiro {
+        width: 100%;
+    }
+
+    .links-redefinicao {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        a {
+            color: var(--cor-primaria-opaca);
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #E3F2FD;
+            }
+        }
+    }
+
+    .paragrafo-redefinir-senha {
+        margin-top: 10px;
+        text-align: center;
+        color: #000000aa;
+    }
+
+    .icone-olho {
+        color: var(--cor-primaria-opaca);
+    }
+
+    .botao-enviar {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        background: var(--cor-primaria);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        height: 50px;
+
+        &:hover {
+            background: var(--cor-primaria-opaca);
+        }
+    }
+}
