@@ -1,51 +1,65 @@
+<!-- Container principal de redefinição de senha -->
 <div class="redefinir-senha-container">
     <br>
+    <!-- Título da página de redefinição de senha -->
     <h1 class="titulo-redefinir-senha">REDEFINIÇÃO DE SENHA</h1>
     <br>
+    <!-- Parágrafo instrutivo para o usuário -->
     <p class="paragrafo-redefinir-senha">Confira o seu e-mail e insira uma nova senha.</p>
     <br>
 
     <form [formGroup]="formRedefinirSenha" (ngSubmit)="onSubmit()">
+        <!-- Campo de e-mail -->
         <mat-form-field appearance="fill" class="tamanho-inteiro">
             <mat-label>E-mail</mat-label>
             <input matInput formControlName="email" placeholder="Insira seu e-mail" required>
+            <!-- Mensagem de erro para e-mail obrigatório -->
             <mat-error *ngIf="formRedefinirSenha.get('email')?.hasError('required')">
                 O campo de e-mail é <strong>obrigatório</strong>.
             </mat-error>
+            <!-- Mensagem de erro para e-mail inválido -->
             <mat-error *ngIf="formRedefinirSenha.get('email')?.hasError('email')">
                 Insira um e-mail <strong>válido</strong>.
             </mat-error>
         </mat-form-field>
 
+        <!-- Campo de nova senha -->
         <mat-form-field appearance="fill" class="tamanho-inteiro">
             <mat-label>Nova Senha</mat-label>
             <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="novaSenha"
                 placeholder="Insira sua nova senha" required>
+            <!-- Botão de visibilidade de senha -->
             <mat-icon class="icone-olho" matSuffix (click)="toggleSenhaVisivel()">
                 {{ senhaVisivel ? 'visibility' : 'visibility_off' }}
             </mat-icon>
+            <!-- Mensagem de erro para nova senha obrigatória -->
             <mat-error *ngIf="formRedefinirSenha.get('novaSenha')?.hasError('required')">
                 O campo de nova senha é <strong>obrigatório</strong>.
             </mat-error>
         </mat-form-field>
 
+        <!-- Campo de confirmação de senha -->
         <mat-form-field appearance="fill" class="tamanho-inteiro">
             <mat-label>Confirmar Nova Senha</mat-label>
             <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="confirmacaoSenha"
                 placeholder="Confirme sua nova senha" required>
+            <!-- Botão de visibilidade de senha (reutilizado) -->
             <mat-icon class="icone-olho" matSuffix (click)="toggleSenhaVisivel()">
                 {{ senhaVisivel ? 'visibility' : 'visibility_off' }}
             </mat-icon>
+            <!-- Mensagem de erro para senhas que não coincidem -->
             <mat-error *ngIf="formRedefinirSenha.errors?.['notSame']">
                 As senhas não coincidem
             </mat-error>
         </mat-form-field>
 
+        <!-- Botão de redefinição de senha -->
         <button mat-raised-button color="primary" type="submit" [disabled]="carregando" class="botao-enviar">
             REDEFINIR SENHA
         </button>
     </form>
 
+    <!-- Links de navegação para redefinição de senha -->
     <div class="links-redefinicao">
         <a routerLink="/login">Voltar ao Login</a>
     </div>
