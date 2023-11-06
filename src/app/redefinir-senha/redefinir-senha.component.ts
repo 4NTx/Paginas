@@ -24,7 +24,7 @@ export class RedefinirSenhaComponent implements OnInit {
     private route: ActivatedRoute,
     private titleService: TitleService
   ) {
-    this.titleService.setTitle('Redefinir Senha');
+    this.titleService.setTitle('- REDEFINIR SENHA');
   }
 
   ngOnInit(): void {
@@ -59,18 +59,18 @@ export class RedefinirSenhaComponent implements OnInit {
 
   onSubmit(): void {
     this.formRedefinirSenha.get('email')?.enable();
-  
+
     if (!this.formRedefinirSenha.valid || !this.tokenRecuperacaoSenha) {
       this.snackBar.open('Por favor, preencha todos os campos corretamente.', 'Fechar', { duration: 5000 });
       this.formRedefinirSenha.get('email')?.disable();
       return;
     }
-  
+
     this.carregando = true;
     const email = this.formRedefinirSenha.get('email')?.value;
     const novaSenha = this.formRedefinirSenha.get('novaSenha')?.value;
     const confirmacaoSenha = this.formRedefinirSenha.get('confirmacaoSenha')?.value;
-  
+
     const payload = {
       email,
       novaSenha,
@@ -91,7 +91,7 @@ export class RedefinirSenhaComponent implements OnInit {
 
     this.formRedefinirSenha.get('email')?.disable();
   }
-  
+
 
   private checarSenhas(group: FormGroup) {
     const novaSenha = group.controls['novaSenha'].value;

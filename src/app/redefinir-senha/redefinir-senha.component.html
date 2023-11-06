@@ -11,7 +11,7 @@
     <form [formGroup]="formRedefinirSenha" (ngSubmit)="onSubmit()">
         <!-- Campo de e-mail -->
         <mat-form-field appearance="fill" class="tamanho-inteiro">
-            <mat-label>E-mail</mat-label>
+            <mat-label>E-mail (automaticamente colocado)</mat-label>
             <input matInput formControlName="email" placeholder="Insira seu e-mail" required>
             <!-- Mensagem de erro para e-mail obrigatório -->
             <mat-error *ngIf="formRedefinirSenha.get('email')?.hasError('required')">
