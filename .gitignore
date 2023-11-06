@@ -6,6 +6,8 @@
 /out-tsc
 /bazel-out
 /src.zip
+src.zip
+.zip
 
 # Node
 /node_modules
