@@ -8,7 +8,7 @@
     align-items: center;
     width: 80%;
     font-family: 'Rubik', sans-serif;
-    max-width: 400px;
+    max-width: 500px;
     margin: auto;
     padding: 20px;
     border-radius: 8px;
@@ -46,19 +46,22 @@
         }
     }
 
-    .link-solicitar-registro,
-    .link-esqueci-senha p a {
-        color: var(--cor-primaria);
-        display: block;
-        text-align: center;
-        margin-top: 10px;
-        font-size: 12.9px;
-    }
+    .links-recuperacao {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
 
-    .link-solicitar-registro a {
-        color: var(--cor-primaria);
-        text-align: center;
-        margin-top: 10px;
+        a {
+            color: var(--cor-primaria-opaca);
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #E3F2FD;
+            }
+        }
     }
 
     .paragrafo-senha {
@@ -68,6 +71,7 @@
     }
 
     .botao-enviar {
+        margin-bottom: 10px;
         width: 100%;
         padding: 10px;
         background: var(--cor-primaria);

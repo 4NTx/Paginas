@@ -1,0 +1,42 @@
+<!-- Container Principal de Recuperação de Senha -->
+<div class="recuperar-senha-container">
+
+  <!-- Título da Página de Recuperação de Senha -->
+  <h2 class="titulo-recuperar-senha">Recuperação de Senha</h2>
+  <br>
+
+  <!-- Parágrafo Instrutivo para o Usuário -->
+  <p class="paragrafo-senha">Coloque o seu email, já registrado, para solicitar a recuperação</p>
+  <br>
+
+  <!-- Formulário de Recuperação de Senha -->
+  <form [formGroup]="formRecuperarSenha" (ngSubmit)="onSubmit()">
+
+    <!-- Campo de E-mail com Validação -->
+    <mat-form-field appearance="fill" class="tamanho-inteiro">
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" placeholder="Insira seu e-mail" required>
+
+      <!-- Mensagem de Erro para Campo Obrigatório -->
+      <mat-error *ngIf="formRecuperarSenha.get('email')?.hasError('required')">
+        O campo de e-mail é <strong>obrigatório</strong>.
+      </mat-error>
+
+      <!-- Mensagem de Erro para Formato de E-mail Inválido -->
+      <mat-error *ngIf="formRecuperarSenha.get('email')?.hasError('email')">
+        Por favor insira um e-mail <strong>válido</strong>.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Botão de Envio do Formulário -->
+    <button type="submit" mat-raised-button color="primary" [disabled]="!formRecuperarSenha.valid" class="botao-enviar">
+      ENVIAR RECUPERAÇÃO
+    </button>
+
+    <!-- Links de Navegação (Registro e Login) -->
+    <div class="links-recuperacao">
+      <a routerLink="/registro">Registrar</a>
+      <a routerLink="/login">Voltar ao Login</a>
+    </div>
+  </form>
+</div>

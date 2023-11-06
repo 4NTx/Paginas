@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+.recuperar-senha-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  width: 80%;
+  font-family: 'Rubik', sans-serif;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--cor-primaria-opaca);
+
+  .titulo-recuperar-senha {
+    text-align: center;
+    color: var(--cor-primaria-opaca);
+    font-size: 40px;
+  }
+
+  .tamanho-inteiro {
+    width: 100%;
+  }
+
+  .paragrafo-senha {
+    margin-top: 10px;
+    text-align: center;
+    color: #000000aa;
+  }
+
+  .botao-enviar {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    height: 50px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--cor-primaria-opaca);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #9E9E9E;
+      color: #BDBDBD;
+    }
+  }
+
+  .links-recuperacao {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    a {
+      color: var(--cor-primaria-opaca);
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #E3F2FD;
+      }
+    }
+  }
+}

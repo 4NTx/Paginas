@@ -8,7 +8,7 @@
     align-items: center;
     width: 80%;
     font-family: 'Rubik', sans-serif;
-    max-width: 400px;
+    max-width: 500px;
     margin: auto;
     padding: 20px;
     border-radius: 8px;
@@ -24,18 +24,22 @@
         width: 100%;
     }
 
-    .link-fazer-login a {
-        color: var(--cor-primaria);
-        text-align: center;
-        margin-top: 10px;
-        font-size: 12.9px;
-    }
+    .links-recuperacao {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
 
-    .link-fazer-login {
-        text-align: center;
-        margin-top: 10px;
-        font-size: 12.9px;
-        color: #000000aa;
+        a {
+            color: var(--cor-primaria-opaca);
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #E3F2FD;
+            }
+        }
     }
 
     .paragrafo-registro {
@@ -50,6 +54,7 @@
 
     .botao-enviar {
         width: 100%;
+        margin-bottom: 10px;
         padding: 10px;
         background: var(--cor-primaria);
         color: white;

@@ -12,12 +12,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { RegistroComponent } from './registro/registro.component';
+import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    RecuperarSenhaComponent,
   ],
   imports: [
     BrowserModule,
