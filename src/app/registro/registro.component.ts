@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TitleService } from '../title.service';
 
@@ -90,11 +90,13 @@ export class RegistroComponent implements OnInit {
     this.http.post('http://localhost:3000/autenticacao/registro', dadosRegistro)
       .subscribe({
         next: data => {
-          this.snackBar.open('Registro bem-sucedido!', 'Fechar', { duration: 5000 });
+          this.snackBar.open('Pedido de registro bem-sucedido! Aguarde a aprovação do administrador, você receberá um email ao ser aprovado!', 'Fechar', { duration: 5000 });
           this.router.navigate(['/login']);
         },
-        error: error => {
-          this.snackBar.open('Erro no registro. Por favor, tente novamente.', 'Fechar', { duration: 5000 });
+        error: (erro: HttpErrorResponse) => {
+          console.error('Erro no registro', erro);
+          const mensagemErro = erro.error?.mensagem || erro.error?.message || erro.error?.error || 'Erro no registro';
+          this.snackBar.open(mensagemErro, 'Fechar', { duration: 5000, panelClass: ['error-snackbar'] });
           this.carregando = false;
         }
       });
