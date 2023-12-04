@@ -23,7 +23,7 @@ export class RegistroComponent implements OnInit {
     private snackBar: MatSnackBar,
     private titleService: TitleService
   ) {
-    this.titleService.setTitle('- REGISTRO');
+    this.titleService.setTitle('| REGISTRO');
   }
 
   ngOnInit(): void {

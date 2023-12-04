@@ -22,7 +22,7 @@ export class RecuperarSenhaComponent implements OnInit {
     private snackBar: MatSnackBar,
     private titleService: TitleService
   ) {
-    this.titleService.setTitle('- RECUPERAÇÃO DE SENHA');
+    this.titleService.setTitle('| RECUPERAÇÃO DE SENHA');
   }
 
   ngOnInit(): void {

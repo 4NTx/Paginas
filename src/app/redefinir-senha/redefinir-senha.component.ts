@@ -24,7 +24,7 @@ export class RedefinirSenhaComponent implements OnInit {
     private route: ActivatedRoute,
     private titleService: TitleService
   ) {
-    this.titleService.setTitle('- REDEFINIR SENHA');
+    this.titleService.setTitle('| REDEFINIR SENHA');
   }
 
   ngOnInit(): void {

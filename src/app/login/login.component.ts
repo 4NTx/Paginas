@@ -24,7 +24,7 @@ export class LoginComponent {
     private titleService: TitleService,
     private snackBar: MatSnackBar
   ) {
-    this.titleService.setTitle('- LOGIN');
+    this.titleService.setTitle('| LOGIN');
   }
 
   fazerLogin(): void {
