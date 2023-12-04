@@ -30,7 +30,7 @@ export class RegistroComponent implements OnInit {
     this.formRegistro = this.formBuilder.group({
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
+      senha: ['', [Validators.required, Validators.minLength(6)]],
       confirmarSenha: ['', Validators.required],
       whats: ['', Validators.required]
     }, {

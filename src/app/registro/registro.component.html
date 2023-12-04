@@ -1,6 +1,6 @@
 <div class="registro-container">
     <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
-        <h1 class="titulo-registro">REXLAB REGISTRO</h1>
+        <img src=".\..\..\..\assets\images\logo.svg" alt="Logo RexLab" class="titulo-registro">
         <p class="paragrafo-registro">Preencha os campos abaixo para criar sua conta.</p>
 
         <mat-form-field appearance="outline" class="tamanho-inteiro">
@@ -23,13 +23,16 @@
             <mat-label>Senha</mat-label>
             <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="senha"
                 placeholder="Digite sua senha" required>
-            <mat-error *ngIf="formRegistro.get('senha')?.invalid && (formRegistro.get('senha')?.touched || enviado)">
-                Por favor, insira uma senha.
+            <mat-error *ngIf="formRegistro.get('senha')?.touched || enviado">
+                <span *ngIf="formRegistro.get('senha')?.hasError('required')">Por favor, insira uma senha.</span>
+                <span *ngIf="formRegistro.get('senha')?.hasError('minlength')">A senha deve ter pelo menos 6
+                    caracteres.</span>
             </mat-error>
             <button mat-icon-button matSuffix (click)="senhaVisivel = !senhaVisivel" type="button">
                 <mat-icon class="icone-olho">{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
         </mat-form-field>
+
 
         <mat-form-field appearance="outline" class="tamanho-inteiro">
             <mat-label>Confirmar Senha</mat-label>
