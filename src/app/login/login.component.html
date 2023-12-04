@@ -5,7 +5,7 @@
             Entre com seu email e senha para acessar o sistema.
         </p>
 
-        <mat-form-field appearance="outline" class="tamanho-inteiro">
+        <mat-form-field appearance="fill" class="tamanho-inteiro">
             <mat-label>Email</mat-label>
             <input matInput type="email" formControlName="email" placeholder="Digite seu email" required>
             <mat-error *ngIf="formLogin.get('email')?.invalid && (formLogin.get('email')?.touched || enviado)">
@@ -13,7 +13,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="tamanho-inteiro">
+        <mat-form-field appearance="fill" class="tamanho-inteiro">
             <mat-label>Senha</mat-label>
             <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="senha"
                 placeholder="Digite sua senha" required>

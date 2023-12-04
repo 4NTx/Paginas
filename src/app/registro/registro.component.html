@@ -3,7 +3,7 @@
         <img src=".\..\..\..\assets\images\logo.svg" alt="Logo RexLab" class="titulo-registro">
         <p class="paragrafo-registro">Preencha os campos abaixo para criar sua conta.</p>
 
-        <mat-form-field appearance="outline" class="tamanho-inteiro">
+        <mat-form-field appearance="fill" class="tamanho-inteiro">
             <mat-label>Nome</mat-label>
             <input matInput type="text" formControlName="nome" placeholder="Digite seu nome" required>
             <mat-error *ngIf="formRegistro.get('nome')?.invalid && (formRegistro.get('nome')?.touched || enviado)">
@@ -11,7 +11,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="tamanho-inteiro">
+        <mat-form-field appearance="fill" class="tamanho-inteiro">
             <mat-label>Email</mat-label>
             <input matInput type="email" formControlName="email" placeholder="Digite seu email" required>
             <mat-error *ngIf="formRegistro.get('email')?.invalid && (formRegistro.get('email')?.touched || enviado)">
@@ -19,7 +19,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="tamanho-inteiro">
+        <mat-form-field appearance="fill" class="tamanho-inteiro">
             <mat-label>Senha</mat-label>
             <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="senha"
                 placeholder="Digite sua senha" required>
@@ -34,7 +34,7 @@
         </mat-form-field>
 
 
-        <mat-form-field appearance="outline" class="tamanho-inteiro">
+        <mat-form-field appearance="fill" class="tamanho-inteiro">
             <mat-label>Confirmar Senha</mat-label>
             <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="confirmarSenha"
                 placeholder="Confirme sua senha" required>
@@ -50,7 +50,7 @@
             </button>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="tamanho-inteiro">
+        <mat-form-field appearance="fill" class="tamanho-inteiro">
             <mat-label>WhatsApp</mat-label>
             <input matInput type="text" formControlName="whats" placeholder="Digite seu número de WhatsApp" required>
             <mat-error *ngIf="formRegistro.get('whats')?.invalid && (formRegistro.get('whats')?.touched || enviado)">
