@@ -1,112 +1,65 @@
-<!-- Container principal de registro -->
-
-
 <div class="registro-container">
-
-    <!-- Início do formulário de registro -->
     <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
-        <br>
-        <!-- Título da página de registro -->
-
         <h1 class="titulo-registro">REXLAB REGISTRO</h1>
-        <!-- Parágrafo instrutivo para o usuário -->
-
         <p class="paragrafo-registro">Preencha os campos abaixo para criar sua conta.</p>
-        <br>
 
-        <!-- Campo de nome com validação -->
         <mat-form-field appearance="outline" class="tamanho-inteiro">
             <mat-label>Nome</mat-label>
             <input matInput type="text" formControlName="nome" placeholder="Digite seu nome" required>
-            <!-- Mensagem de erro para nome inválido -->
-
             <mat-error *ngIf="formRegistro.get('nome')?.invalid && (formRegistro.get('nome')?.touched || enviado)">
-                Por favor, insira um nome <strong>válido</strong>.
+                Por favor, insira um nome válido.
             </mat-error>
         </mat-form-field>
-
-        <!-- Campo de e-mail com validação -->
 
         <mat-form-field appearance="outline" class="tamanho-inteiro">
             <mat-label>Email</mat-label>
             <input matInput type="email" formControlName="email" placeholder="Digite seu email" required>
-            <!-- Mensagem de erro para e-mail inválido -->
-
             <mat-error *ngIf="formRegistro.get('email')?.invalid && (formRegistro.get('email')?.touched || enviado)">
-                Por favor, insira um email <strong>válido</strong>.
+                Por favor, insira um email válido.
             </mat-error>
         </mat-form-field>
 
-        <!-- Campo de senha com botão de visibilidade -->
         <mat-form-field appearance="outline" class="tamanho-inteiro">
             <mat-label>Senha</mat-label>
             <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="senha"
                 placeholder="Digite sua senha" required>
-            <!-- Mensagem de erro para senha inválida -->
-
             <mat-error *ngIf="formRegistro.get('senha')?.invalid && (formRegistro.get('senha')?.touched || enviado)">
                 Por favor, insira uma senha.
             </mat-error>
-            <!-- Botão de alternância da visibilidade da senha -->
-
             <button mat-icon-button matSuffix (click)="senhaVisivel = !senhaVisivel" type="button">
                 <mat-icon class="icone-olho">{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
         </mat-form-field>
 
-        <!-- Campo de confirmação de senha com validação -->
         <mat-form-field appearance="outline" class="tamanho-inteiro">
             <mat-label>Confirmar Senha</mat-label>
             <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="confirmarSenha"
                 placeholder="Confirme sua senha" required>
-            <!-- Mensagem de erro para confirmação de senha -->
-
             <mat-error
                 *ngIf="formRegistro.get('confirmarSenha')?.invalid && (formRegistro.get('confirmarSenha')?.touched || enviado)">
-                <span *ngIf="f['confirmarSenha'].errors?.['naoCoincide']">As senhas não coincidem.</span>
-                <span *ngIf="f['confirmarSenha'].errors?.['required']">Por favor, confirme sua senha.</span>
+                <span *ngIf="formRegistro.get('confirmarSenha')?.errors?.['naoCoincide']">As senhas não
+                    coincidem.</span>
+                <span *ngIf="formRegistro.get('confirmarSenha')?.errors?.['required']">Por favor, confirme sua
+                    senha.</span>
             </mat-error>
-            <!-- Botão de alternância da visibilidade da senha (confirmar senha) -->
-
             <button mat-icon-button matSuffix (click)="senhaVisivel = !senhaVisivel" type="button">
                 <mat-icon class="icone-olho">{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
         </mat-form-field>
 
-        <!-- Campo de id do cartão com validação -->
-        <mat-form-field appearance="outline" class="tamanho-inteiro">
-            <mat-label>ID do Cartão</mat-label>
-            <input matInput type="text" formControlName="cartaoID" placeholder="Digite o ID do seu cartão" required>
-            <!-- Mensagem de erro para id do cartão inválido -->
-
-            <mat-error
-                *ngIf="formRegistro.get('cartaoID')?.invalid && (formRegistro.get('cartaoID')?.touched || enviado)">
-                Por favor, insira um ID de cartão <strong>válido</strong>.
-            </mat-error>
-        </mat-form-field>
-
-        <!-- Campo de whatsapp com validação -->
         <mat-form-field appearance="outline" class="tamanho-inteiro">
             <mat-label>WhatsApp</mat-label>
             <input matInput type="text" formControlName="whats" placeholder="Digite seu número de WhatsApp" required>
-            <!-- Mensagem de erro para número de whatsapp inválido -->
-
             <mat-error *ngIf="formRegistro.get('whats')?.invalid && (formRegistro.get('whats')?.touched || enviado)">
-                Por favor, insira um número de WhatsApp <strong>válido</strong>.
+                Por favor, insira um número de WhatsApp válido.
             </mat-error>
         </mat-form-field>
 
-        <!-- Botão de submissão do formulário -->
-        <button mat-raised-button type="submit" class="botao-enviar" [disabled]="carregando">
-            REGISTRAR
-        </button>
+        <button mat-raised-button type="submit" class="botao-enviar" [disabled]="carregando">REGISTRAR</button>
 
-        <!-- Links de navegação (login e recuperação de senha) -->
         <div class="links-recuperacao">
             <a routerLink="/login">Fazer Login</a>
             <a routerLink="/recuperar-senha">Esqueci Minha Senha</a>
         </div>
     </form>
-
-    <!-- Fim do formulário de registro -->
 </div>

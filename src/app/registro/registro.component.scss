@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
+$ponto-de-quebra-md: 768px;
+$ponto-de-quebra-sm: 480px;
+$tamanho-fonte-grande: 2.5rem;
+$tamanho-fonte-medio: 2rem;
+$tamanho-fonte-pequeno: 1.5rem;
+
 .registro-container {
     position: absolute;
     top: 50%;
@@ -14,10 +20,28 @@
     border-radius: 8px;
     box-shadow: 0 0 5px var(--cor-primaria-opaca);
 
+    @media only screen and (max-width: $ponto-de-quebra-md) {
+        width: 90%;
+        padding: 15px;
+    }
+
+    @media only screen and (max-width: $ponto-de-quebra-sm) {
+        width: 95%;
+        padding: 10px;
+    }
+
     .titulo-registro {
         text-align: center;
         color: var(--cor-primaria-opaca);
         font-size: 40px;
+
+        @media only screen and (max-width: $ponto-de-quebra-md) {
+            font-size: $tamanho-fonte-medio;
+        }
+
+        @media only screen and (max-width: $ponto-de-quebra-sm) {
+            font-size: $tamanho-fonte-pequeno;
+        }
     }
 
     .tamanho-inteiro {
