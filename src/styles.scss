@@ -12,10 +12,14 @@ $Paginas-theme: mat.define-light-theme((color: (primary: $Paginas-primary,
 
 :root {
 
-  --cor-primaria: #008080;
-  --cor-primaria-opaca: #0080808c;
-  --mdc-outlined-text-field-focus-label-text-color: #008080;
-  --mdc-outlined-text-field-focus-outline-color: #008080;
+  --cor-primaria: #008080 !important;
+  --cor-primaria-opaca: #0080808c !important;
+  --mdc-outlined-text-field-focus-label-text-color: #008080 !important;
+  --mdc-outlined-text-field-focus-outline-color: #008080 !important;
+  --mdc-filled-text-field-focus-active-indicator-color: #008080 !important;
+  --mdc-outlined-text-field-error-hover-outline-color: #008080 !important;
+  --mdc-filled-text-field-focus-label-text-color: #008080 !important;
+  --mdc-filled-text-field-caret-color: #008080;
 }
 
 html,
@@ -26,4 +30,12 @@ body {
 body {
   margin: 0;
   font-family: 'Rubik', sans-serif;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  caret-color: #008080;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  caret-color: #008080 !important;
 }

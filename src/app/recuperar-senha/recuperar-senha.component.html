@@ -1,39 +1,30 @@
-<!-- Container principal de recuperação de senha -->
 <div class="recuperar-senha-container">
 
   <br>
-  <!-- Título da página de recuperação de senha -->
-  <h1 class="titulo-recuperar-senha">RECUPERAÇÃO DE SENHA</h1>
+  <img src=".\..\..\..\assets\images\logo.svg" alt="Logo RexLab" class="titulo-recuperar">
   <br>
 
-  <!-- Parágrafo instrutivo para o usuário -->
   <p class="paragrafo-senha">Coloque o seu email, já registrado, para solicitar a recuperação</p>
 
-  <!-- Formulário de recuperação de senha -->
   <form [formGroup]="formRecuperarSenha" (ngSubmit)="onSubmit()">
 
-    <!-- Campo de e-mail com validação -->
     <mat-form-field appearance="fill" class="tamanho-inteiro">
       <mat-label>E-mail</mat-label>
       <input matInput formControlName="email" placeholder="Insira seu e-mail" required>
 
-      <!-- Mensagem de erro para campo obrigatório -->
       <mat-error *ngIf="formRecuperarSenha.get('email')?.hasError('required')">
         O campo de e-mail é <strong>obrigatório</strong>.
       </mat-error>
 
-      <!-- Mensagem de erro para formato de e-mail inválido -->
       <mat-error *ngIf="formRecuperarSenha.get('email')?.hasError('email')">
         Por favor insira um e-mail <strong>válido</strong>.
       </mat-error>
     </mat-form-field>
 
-    <!-- Botão de envio do formulário -->
     <button type="submit" mat-raised-button color="primary" [disabled]="!formRecuperarSenha.valid" class="botao-enviar">
       ENVIAR RECUPERAÇÃO
     </button>
 
-    <!-- Links de navegação (registro e login) -->
     <div class="links-recuperacao">
       <a routerLink="/registro">Registrar</a>
       <a routerLink="/login">Voltar ao Login</a>

@@ -58,7 +58,8 @@
             </mat-error>
         </mat-form-field>
 
-        <button mat-raised-button type="submit" class="botao-enviar" [disabled]="carregando">REGISTRAR</button>
+        <button mat-raised-button type="submit" class="botao-enviar"
+            [disabled]="carregando || !formRegistro.valid">REGISTRAR</button>
 
         <div class="links-recuperacao">
             <a routerLink="/login">Fazer Login</a>

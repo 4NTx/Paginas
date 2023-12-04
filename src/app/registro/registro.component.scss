@@ -79,12 +79,16 @@ $tamanho-fonte-pequeno: 1.5rem;
         color: white;
         border: none;
         border-radius: 4px;
-        cursor: pointer;
         transition: background 0.3s ease;
         height: 50px;
 
         &:hover {
             background: var(--cor-primaria-opaca);
+        }
+
+        &:disabled {
+            background-color: #9E9E9E;
+            color: #BDBDBD;
         }
     }
 }
