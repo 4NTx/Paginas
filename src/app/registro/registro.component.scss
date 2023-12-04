@@ -12,7 +12,7 @@
     margin: auto;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px var(--cor-primaria-opaca);
+    box-shadow: 0 0 5px var(--cor-primaria-opaca);
 
     .titulo-registro {
         text-align: center;
@@ -22,6 +22,7 @@
 
     .tamanho-inteiro {
         width: 100%;
+        margin-top: 10px;
     }
 
     .links-recuperacao {
@@ -53,6 +54,7 @@
     }
 
     .botao-enviar {
+        margin-top: 12px;
         width: 100%;
         margin-bottom: 10px;
         padding: 10px;

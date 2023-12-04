@@ -19,39 +19,18 @@ export class LoginComponent {
   senhaVisivel = false;
   carregando = false;
 
-  constructor(private http: HttpClient, private titleService: TitleService, private snackBar: MatSnackBar) {
+  constructor(
+    private http: HttpClient,
+    private titleService: TitleService,
+    private snackBar: MatSnackBar
+  ) {
     this.titleService.setTitle('- LOGIN');
   }
 
   fazerLogin(): void {
     this.enviado = true;
-
     if (this.formLogin.invalid || this.carregando) {
-      let mensagensErro = [];
-      const email = this.formLogin.get('email');
-      const senha = this.formLogin.get('senha');
-
-      if (email?.invalid) {
-        if (email.errors?.['required']) {
-          mensagensErro.push('Por favor, insira um email.');
-        } else if (email.errors?.['email']) {
-          mensagensErro.push('Por favor, insira um email válido.');
-        }
-      }
-
-      if (senha?.invalid && senha.errors?.['required']) {
-        mensagensErro.push('Por favor, insira uma senha.');
-      }
-
-      if (this.carregando) {
-        mensagensErro.push('Estamos enviando sua requisição, aguarde...');
-      }
-
-      if (!email?.value && !senha?.value) {
-        mensagensErro = ['Verifique todos os campos obrigatórios.'];
-      }
-
-      this.snackBar.open(mensagensErro.join(' '), 'Fechar', { duration: 5000, panelClass: ['warning-snackbar'] });
+      this.exibirMensagensErro();
       return;
     }
 
@@ -60,19 +39,56 @@ export class LoginComponent {
 
     this.http.post('http://localhost:3000/autenticacao/login', credenciais)
       .subscribe({
-        next: (resposta: any) => {
-          console.log('Login bem-sucedido!', resposta);
-          localStorage.setItem('token', resposta.token);
-          this.snackBar.open('Login bem-sucedido!', 'Fechar', { duration: 5000, panelClass: ['success-snackbar'] });
-          this.carregando = false;
-        },
-        error: (erro: HttpErrorResponse) => {
-          console.error('Erro no login', erro);
-          const mensagemErro = erro.error?.mensagem || erro.error?.message || erro.error?.error || 'Erro no login';
-          this.snackBar.open(mensagemErro, 'Fechar', { duration: 5000, panelClass: ['error-snackbar'] });
-          this.carregando = false;
-        }
+        next: this.processarSucessoLogin.bind(this),
+        error: this.processarErroLogin.bind(this)
       });
+  }
+
+  private exibirMensagensErro() {
+    const mensagensErro = this.getMensagensErro();
+    this.snackBar.open(mensagensErro.join(' '), 'Fechar', {
+      duration: 5000,
+      panelClass: ['warning-snackbar']
+    });
+  }
+
+  private getMensagensErro(): string[] {
+    const email = this.formLogin.get('email');
+    const senha = this.formLogin.get('senha');
+
+    let mensagensErro = [];
+
+    if (email?.invalid) {
+      mensagensErro.push(email.errors?.['required'] ? 'Por favor, insira um email.' : 'Por favor, insira um email válido.');
+    }
+
+    if (senha?.invalid) {
+      mensagensErro.push('Por favor, insira uma senha.');
+    }
+
+    if (this.carregando) {
+      mensagensErro.push('Estamos enviando sua requisição, aguarde...');
+    }
+
+    if (!email?.value && !senha?.value) {
+      mensagensErro = ['Verifique todos os campos obrigatórios.'];
+    }
+
+    return mensagensErro;
+  }
+
+  private processarSucessoLogin(resposta: any) {
+    console.log('Login bem-sucedido!', resposta);
+    localStorage.setItem('token', resposta.token);
+    this.snackBar.open('Login bem-sucedido!', 'Fechar', { duration: 5000, panelClass: ['success-snackbar'] });
+    this.carregando = false;
+  }
+
+  private processarErroLogin(erro: HttpErrorResponse) {
+    console.error('Erro no login', erro);
+    const mensagemErro = erro.error?.mensagem || erro.error?.message || erro.error?.error || 'Erro no login';
+    this.snackBar.open(mensagemErro, 'Fechar', { duration: 5000, panelClass: ['error-snackbar'] });
+    this.carregando = false;
   }
 
   toggleSenhaVisivel() {

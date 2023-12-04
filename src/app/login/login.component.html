@@ -1,55 +1,37 @@
-<!-- Container Principal de Login -->
 <div class="login-container">
-
-    <!-- Início do Formulário de Login -->
     <form [formGroup]="formLogin" (ngSubmit)="fazerLogin()">
-        <br>
-
-        <!-- Título da Página de Login -->
         <h1 class="titulo-login">REXLAB LOGIN</h1>
-        <br>
+        <p class="paragrafo-senha">
+            Entre com seu email e senha para acessar o sistema.
+        </p>
 
-        <!-- Parágrafo Instrutivo para o Usuário -->
-        <p class="paragrafo-senha">Entre com seu email e senha para acessar o sistema.</p>
-        <br>
-
-        <!-- Campo de E-mail com Validação -->
         <mat-form-field appearance="outline" class="tamanho-inteiro">
             <mat-label>Email</mat-label>
             <input matInput type="email" formControlName="email" placeholder="Digite seu email" required>
-            <!-- Mensagem de Erro para E-mail Inválido -->
             <mat-error *ngIf="formLogin.get('email')?.invalid && (formLogin.get('email')?.touched || enviado)">
-                Por favor, insira um email <strong>válido.</strong>
+                Insira um email válido, por favor.
             </mat-error>
         </mat-form-field>
 
-        <!-- Campo de Senha com Botão de Visibilidade -->
         <mat-form-field appearance="outline" class="tamanho-inteiro">
             <mat-label>Senha</mat-label>
             <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="senha"
                 placeholder="Digite sua senha" required>
-            <!-- Mensagem de Erro para Senha -->
             <mat-error *ngIf="formLogin.get('senha')?.invalid && (formLogin.get('senha')?.touched || enviado)">
-                Por favor, insira uma senha.
+                A senha é obrigatória.
             </mat-error>
-            <!-- Botão de Alternância da Visibilidade da Senha -->
             <button mat-icon-button matSuffix (click)="senhaVisivel = !senhaVisivel" type="button">
                 <mat-icon class="icone-olho">{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
         </mat-form-field>
 
-        <!-- Botão de Envio do Formulário -->
-        <button mat-raised-button type="submit" class="botao-enviar" (click)="fazerLogin()">
-            <mat-icon>arrow_forward</mat-icon>
+        <button mat-raised-button type="submit" class="botao-enviar">
+            Entrar <mat-icon>arrow_forward</mat-icon>
         </button>
 
-        <!-- Links de Navegação (Registro e Recuperação de Senha) -->
         <div class="links-recuperacao">
             <a routerLink="/registro">Registrar</a>
             <a routerLink="/recuperar-senha">Esqueci Minha Senha</a>
         </div>
-
     </form>
-    <!-- Fim do Formulário de Login -->
-
 </div>

@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
+$ponto-de-quebra-md: 768px;
+$ponto-de-quebra-sm: 480px;
+$tamanho-fonte-grande: 2.5rem;
+$tamanho-fonte-medio: 2rem;
+$tamanho-fonte-pequeno: 1.5rem;
+
 .login-container {
     position: absolute;
     top: 50%;
@@ -12,12 +18,31 @@
     margin: auto;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px var(--cor-primaria-opaca);
+    box-shadow: 0 0 5px var(--cor-primaria-opaca);
+
+    @media only screen and (max-width: $ponto-de-quebra-md) {
+        width: 90%;
+        padding: 15px;
+    }
+
+    @media only screen and (max-width: $ponto-de-quebra-sm) {
+        width: 95%;
+        padding: 10px;
+    }
 
     .titulo-login {
+        margin-bottom: 15px;
         text-align: center;
         color: var(--cor-primaria-opaca);
-        font-size: 40px;
+        font-size: $tamanho-fonte-grande;
+
+        @media only screen and (max-width: $ponto-de-quebra-md) {
+            font-size: $tamanho-fonte-medio;
+        }
+
+        @media only screen and (max-width: $ponto-de-quebra-sm) {
+            font-size: $tamanho-fonte-pequeno;
+        }
     }
 
     .icone-olho {
@@ -26,6 +51,12 @@
 
     .tamanho-inteiro {
         width: 100%;
+        margin-top: 10px;
+    }
+
+    mat-form-field {
+        width: 100%;
+        margin-bottom: 5px;
     }
 
     .grupo-input {
@@ -47,6 +78,7 @@
     }
 
     .links-recuperacao {
+        margin-top: 15px;
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -65,12 +97,14 @@
     }
 
     .paragrafo-senha {
+        margin-bottom: 20px;
         margin-top: 10px;
         text-align: center;
         color: #000000aa;
     }
 
     .botao-enviar {
+        margin-top: 12px;
         margin-bottom: 10px;
         width: 100%;
         padding: 10px;
@@ -92,6 +126,7 @@
     }
 
     .erro-mensagem {
+        margin-top: 5px;
         color: #FF5252;
         font-size: 12px;
     }
